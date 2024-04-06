@@ -1,10 +1,12 @@
 FROM node:20-alpine as build
 
+RUN npm install -g pnpm
+
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN pnpm install
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html

@@ -2,28 +2,28 @@ version: "3.8"
 
 services:
   crawler:
-    image: 080196/crawler-app
+    image: 0xdvck/crawler-app
     container_name: crawler
     env_file:
       - ./configs/.env.crawler
     networks:
       - crawler
   consumer:
-    image: 080196/consumer-app
+    image: 0xdvck/consumer-app
     container_name: consumer
     env_file:
       - ./configs/.env.consumer
     networks:
       - crawler
   website:
-    image: 080196/crawler-website
+    image: 0xdvck/crawler-website
     container_name: website
     ports:
       - "3100:80"
     networks:
       - crawler
   api:
-    image: 080196/crawler-api
+    image: 0xdvck/crawler-api
     container_name: api
     env_file:
       - ./configs/.env.api
